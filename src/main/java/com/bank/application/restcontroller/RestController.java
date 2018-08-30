@@ -23,8 +23,17 @@ public class RestController {
 	@Autowired 
 	private Manager manager;
 	
+	/**
+	 * 
+	 * @param ifsc
+	 * @return
+	 * @throws Exception
+	 * 
+	 * API: Given IFSC code return the branch details.
+	 */
+	
 	@RequestMapping(value = "get/{ifsc}", method = RequestMethod.GET)
-	public Optional<Branch> getUser(@PathVariable("ifsc" ) final String ifsc) throws Exception {
+	public Optional<Branch> getBranch(@PathVariable("ifsc" ) final String ifsc) throws Exception {
 	
 		try {
 			return manager.getBranchDetailsByIfsc(ifsc);
@@ -33,8 +42,17 @@ public class RestController {
 		}
 	}
 	
+	
+	/**
+	 * 
+	 * @param bankName
+	 * @param city
+	 * @return
+	 * @throws Exception
+	 * API: Given Bank name and City, return list of all the branches in the city.
+	 */
 	@RequestMapping(value = "get/{bankName}/{city}", method = RequestMethod.GET)
-	public List<BankBranch> getUser(@PathVariable("bankName") final String bankName,
+	public List<BankBranch> getBranchList(@PathVariable("bankName") final String bankName,
 									@PathVariable("city") final String city) throws Exception {
 	
 		try {
